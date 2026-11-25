@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>歷史平行時空</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2214%22 fill=%22%239C6B43%22/><circle cx=%2216%22 cy=%2216%22 r=%226%22 fill=%22%23C89F7B%22/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<style type="text/tailwindcss">
+@layer components{
+.info{@apply bg-white border border-[#E5DACB] rounded-2xl p-4 shadow-none cursor-default}
+.btn{@apply inline-flex items-center justify-center gap-2 select-none cursor-pointer rounded-2xl bg-[#D95D39] text-white border-b-4 border-[#A83E20] px-6 py-3 font-bold text-center shadow-md transition hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#C04A28] active:translate-y-0.5 active:border-b-2}
+.btn-o{@apply bg-[#D95D39] border-[#A83E20] hover:bg-[#C04A28]}
+.opt{@apply block w-full select-none cursor-pointer rounded-xl bg-white border-2 border-b-4 border-[#D95D39] border-b-[#C04A28] text-[#3D2E22] px-4 py-3 text-left font-bold shadow-md transition hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#FFF3EE] active:translate-y-0.5}
+.pill{@apply shrink-0 select-none cursor-pointer whitespace-nowrap rounded-full border-2 border-b-4 px-4 py-1.5 text-sm font-bold transition hover:-translate-y-0.5 hover:shadow-md}
+.tag{@apply inline-flex items-center gap-1 rounded-full bg-[#FFF3EE] px-3 py-0.5 text-sm font-bold text-[#D95D39]}
+.btn-x{@apply bg-[#D95D39] border-[#A83E20] hover:bg-[#C04A28] rounded-xl px-8 py-4 text-lg shadow-lg}
+.sel{@apply w-full cursor-pointer rounded-xl border-2 border-b-4 border-[#D95D39] border-b-[#C04A28] bg-white px-3 py-2 font-bold shadow-md transition hover:-translate-y-0.5 hover:shadow-lg}
+}
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+.opt svg{color:#D95D39}.opt.ans svg{color:#2F6F4E}.opt.ons{background:#D95D39!important;border-color:#D95D39!important;border-bottom-color:#A83E20!important;color:#fff!important}.opt.ons svg{color:#fff}
+.page{display:none}.page.on{display:block}
+</style>
+</head>
+<body class="bg-[#FAF6F0] text-[#3D2E22] leading-relaxed">
+<header class="sticky top-0 z-20 border-b border-[#E5DACB] bg-white" style="padding-top:env(safe-area-inset-top,0px)">
+ <div class="mx-auto max-w-3xl px-4 pt-3">
+  <div class="flex items-center justify-between"><b class="text-lg text-[#3D2E22]"><i class="fa-solid fa-earth-asia mr-2"></i>歷史平行時空</b><span class="text-sm text-[#7C6A58]">進度 <b id="pct">0%</b></span></div>
+  <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-[#EFE4D6]"><i id="pb" class="block h-full w-0 rounded-full bg-[#D95D39] transition-all"></i></div>
+  <nav id="tabs" class="flex gap-2 overflow-x-auto py-3" style="scrollbar-width:none"></nav>
+ </div>
+</header>
+
+<main class="mx-auto max-w-3xl space-y-8 px-4 py-8 pb-20">
+
+<section id="p0" class="page space-y-8">
+ <h1 class="text-3xl font-bold">為什麼歷史老是背混？</h1>
+ <div class="grid grid-cols-2 gap-3">
+  <div class="info bg-[#F4EDE4]"><span class="rounded-full bg-[#ECECEC] px-3 py-0.5 text-sm font-bold text-[#7C6A58]">傳統背法</span><p class="mb-0 mt-2"><b>臺、中、世分開背</b><br>年代全打架。</p></div>
+  <div class="info bg-[#F4EDE4]"><span class="rounded-full bg-[#EFE4D6] px-3 py-0.5 text-sm font-bold text-[#6E4726]">橫向對照</span><p class="mb-0 mt-2"><b>鎖定同一年</b><br>一次看懂全世界。</p></div>
+ </div>
+ <div class="space-y-4"><h2 class="text-xl font-bold">暖身：真的假的？</h2><div id="warm" class="space-y-4"></div></div>
+ <button class="btn w-full" onclick="go(1)">開始學習：17 世紀平行時空<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p1" class="page space-y-8">
+ <h1 class="text-3xl font-bold">17 世紀：荷蘭來臺灣</h1>
+ <div class="space-y-3">
+  <div class="relative flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#F4EDE4] to-[#D9BFA3]">
+   <button id="play" onclick="togglePlay()" class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-full bg-[#D95D39] text-3xl text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl" aria-label="播放"><i class="fa-solid fa-play"></i></button>
+   <span class="absolute bottom-2 right-3 rounded bg-white/80 px-2 text-sm font-bold text-[#7C6A58]">04:00</span></div>
+  <div class="h-2 overflow-hidden rounded-full bg-[#E5DACB]"><i id="vp" class="block h-full w-0 bg-[#D95D39]"></i></div>
+  <p class="mb-0 text-sm text-[#7C6A58]"><i class="fa-solid fa-hand-pointer mr-1"></i>點時間，看重點</p>
+  <div id="segs" class="grid grid-cols-2 gap-3"></div>
+  <div class="info bg-[#F4EDE4]"><b class="text-[#6E4726]">重點</b><p id="nar" class="mb-0 mt-1 text-lg"></p></div>
+ </div>
+ <div class="space-y-3"><h2 class="text-xl font-bold">橫向對照表</h2>
+  <div class="info overflow-x-auto p-0"><table class="w-full min-w-[520px] text-left text-sm">
+   <tr class="bg-[#F4EDE4]"><th class="p-3">年份</th><th class="p-3">關鍵事件</th><th class="p-3">中國／東亞</th><th class="p-3">歐洲</th></tr>
+   <tr class="border-t border-[#E5DACB]"><td class="p-3 font-bold text-[#6E4726]">1602</td><td class="p-3">荷蘭成立東印度公司</td><td class="p-3">明朝萬曆年間</td><td class="p-3">歐洲海權崛起</td></tr>
+   <tr class="border-t border-[#E5DACB]"><td class="p-3 font-bold text-[#6E4726]">1624</td><td class="p-3">荷蘭建熱蘭遮城</td><td class="p-3">明朝天啟末年</td><td class="p-3">歐洲三十年戰爭</td></tr>
+   <tr class="border-t border-[#E5DACB]"><td class="p-3 font-bold text-[#6E4726]">1644</td><td class="p-3">荷蘭統治臺灣中後期</td><td class="p-3">清兵入關（明亡）</td><td class="p-3">歐洲戰亂未歇</td></tr>
+   <tr class="border-t border-[#E5DACB]"><td class="p-3 font-bold text-[#6E4726]">1662</td><td class="p-3">鄭成功驅逐荷蘭人</td><td class="p-3">清朝康熙即位</td><td class="p-3">歐洲路易十四時期</td></tr></table></div></div>
+ <button class="btn w-full" onclick="go(2)">前往 AI 互動練習<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p2" class="page space-y-8">
+ <h1 class="text-3xl font-bold">AI 互動練習</h1>
+ <div class="space-y-3 rounded-2xl border border-[#D95D39] bg-white p-5 text-center">
+  <p class="m-0 text-lg"><b>點下方按鈕</b>開啟平行時空工具，查查 17 與 19 世紀各地大事！</p>
+  <a class="btn btn-x w-full" href="https://0932236055.github.io/History./" target="_blank" rel="noopener">開啟《歷史平行時空》AI 網頁<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+  <p class="m-0 text-xs text-[#A08B76]">註：AI 資訊僅供參考，請搭配影片核對。</p></div>
+ <div class="space-y-4"><h2 class="text-xl font-bold">隨堂小考：配對同年代 <span class="rounded-full bg-[#EFE4D6] px-3 py-0.5 text-sm font-bold text-[#6E4726]">不計分</span></h2><div id="mq" class="space-y-3"></div>
+  <button class="btn w-full" onclick="mqCheck()"><i class="fa-solid fa-check"></i>檢查配對</button></div>
+ <button class="btn w-full" onclick="go(3)">前往 19 世紀連鎖反應<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p3" class="page space-y-8">
+ <h1 class="text-3xl font-bold">19 世紀的連鎖反應</h1>
+ <p class="m-0 text-[#7C6A58]"><span class="tag"><i class="fa-solid fa-hand-pointer"></i>點擊卡片展開</span></p>
+ <div id="dom" class="space-y-2"></div>
+ <button class="btn w-full" onclick="go(4)">進入實戰：A→B→C 骨牌排序<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p4" class="page space-y-8">
+ <h1 class="text-3xl font-bold"><i class="fa-solid fa-layer-group mr-2 text-[#6E4726]"></i>歷史骨牌排排看</h1>
+ <p class="m-0 text-[#7C6A58]">依序點擊卡片，排成「起因 A → 衝突 B → 影響 C」</p>
+ <div id="sorts" class="space-y-6"></div>
+ <button class="btn w-full" onclick="go(5)">進入歷史「如果」實驗室<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p5" class="page space-y-8">
+ <h1 class="text-3xl font-bold"><i class="fa-solid fa-flask mr-2 text-[#6E4726]"></i>歷史「如果」實驗室</h1>
+ <p class="m-0"><span class="tag"><i class="fa-solid fa-hand-pointer"></i>點擊抽掉一張關鍵骨牌</span></p>
+ <div id="lab" class="space-y-4"></div>
+ <button class="btn w-full" onclick="go(6)">進入時空角色模擬<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p6" class="page space-y-8">
+ <h1 class="text-3xl font-bold"><i class="fa-solid fa-user-clock mr-2 text-[#6E4726]"></i>時空穿越者：你的荷包怎麼了？</h1>
+ <div id="roles" class="grid gap-3 sm:grid-cols-2"></div>
+ <div id="scn" class="space-y-4"></div>
+ <button class="btn w-full" onclick="go(7)">準備好了！前往最終測驗（6 題）<i class="fa-solid fa-arrow-right"></i></button>
+</section>
+
+<section id="p7" class="page space-y-6">
+ <h1 class="text-3xl font-bold">總結測驗</h1>
+ <p class="info mb-0 border-[#E5DACB] bg-[#F4EDE4] text-sm">共 6 題｜答對 5 題（83 分以上）通過｜最多可重考 2 次，剩餘 <b id="left" class="text-[#6E4726]">2</b> 次</p>
+ <div id="score"></div>
+ <div id="fq" class="space-y-5"></div>
+ <button id="sub" class="btn w-full" onclick="finish()"><i class="fa-solid fa-paper-plane"></i>送出交卷</button>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const names=['1. 觀念暖身','2. 17世紀','3. AI互動','4. 19世紀','5. 骨牌排序','6. 如果實驗室','7. 角色模擬','8. 總結測驗'];
+const vis=new Set([0]);let mDone=false,fDone=false;
+const PA='border-[#D95D39] border-b-[#C04A28] bg-white text-[#D95D39] hover:bg-[#FFF3EE]',PB='border-[#D95D39] border-b-[#A83E20] bg-[#D95D39] text-white';
+names.forEach((n,i)=>{const b=document.createElement('button');b.className='pill '+PA;b.textContent=n;b.onclick=()=>go(i);$('#tabs').appendChild(b)});
+function prog(){const p=Math.min(100,vis.size*9+(mDone?8:0)+(fDone?20:0));$('#pct').textContent=p+'%';$('#pb').style.width=p+'%'}
+function go(i){vis.add(i);document.querySelectorAll('.page').forEach((e,k)=>e.classList.toggle('on',k===i));
+ document.querySelectorAll('#tabs .pill').forEach((e,k)=>{e.className='pill '+(k===i?PB:PA);if(k===i)e.scrollIntoView({inline:'center',block:'nearest'})});
+ prog();scrollTo({top:0,behavior:'smooth'})}
+go(0);
+
+/* 暖身翻牌 */
+[{q:'1624 年荷蘭來臺南時，莎士比亞剛過世不久？',a:'真的！莎士比亞 1616 年過世，幾乎同時代。'},
+ {q:'乾隆皇帝在位時，美國剛好發表《獨立宣言》？',a:'真的！都在 1776 年（18 世紀）。'}].forEach((w,i)=>{
+ const d=document.createElement('button');d.className='opt';
+ const head=`<span class="text-sm text-[#7C6A58]">題目 ${i+1}</span><br><span class="text-lg">${w.q}</span><br>`;
+ d.innerHTML=head+'<span class="tag mt-2">點我看答案<i class="fa-solid fa-chevron-down"></i></span>';
+ d.onclick=()=>{d.classList.add('!border-[#2F6F4E]','!bg-[#ECF5F0]','ans');d.innerHTML=head+`<b class="mt-2 inline-block text-[#2F6F4E]"><i class="fa-solid fa-check mr-1"></i>${w.a}</b>`};
+ $('#warm').appendChild(d)});
+
+/* 影片 */
+const segs=[{t:30,h:'歐洲大航海',n:'歐洲人開通亞洲航線，荷蘭成立東印度公司。'},{t:85,h:'荷蘭佔臺灣',n:'1624 年荷蘭占領大員，蓋熱蘭遮城做貿易。'},
+{t:140,h:'明末與清初',n:'1644 年明朝滅亡，清兵入關，天下大亂。'},{t:190,h:'鄭成功來臺',n:'1662 年鄭成功趕走荷蘭人，臺灣換主人。'}];
+let t=0,timer=null;
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+$('#segs').innerHTML=segs.map((s,i)=>`<button class="opt text-center text-sm" onclick="setSeg(${i})"><i class="fa-solid fa-play mr-1 text-xs"></i>${fmt(s.t)} ${s.h}</button>`).join('');
+function upd(){$('#vp').style.width=t/240*100+'%';let k=0;segs.forEach((s,i)=>{if(t>=s.t)k=i});
+ document.querySelectorAll('#segs .opt').forEach((e,i)=>{e.classList.toggle('ons',i===k)});$('#nar').textContent=segs[k].n}
+function setSeg(i){t=segs[i].t;upd()}
+function togglePlay(){if(timer){clearInterval(timer);timer=null;$('#play').innerHTML='<i class="fa-solid fa-play"></i>';return}
+ $('#play').innerHTML='<i class="fa-solid fa-pause"></i>';timer=setInterval(()=>{t++;if(t>=240){t=240;togglePlay()}upd()},1000)}
+upd();
+
+/* 隨堂小考 */
+const opts=['明朝萬曆年間','歐洲三十年戰爭','荷蘭統治臺灣中後期','清朝康熙即位'];
+const mq=[{e:'1602 荷蘭東印度公司成立',a:0,h:'查 1602 年中國年號。'},{e:'1624 荷蘭建熱蘭遮城',a:1,h:'想想歐洲的三十年大戰。'},
+{e:'1644 清兵入關',a:2,h:'荷蘭已統治約二十年。'},{e:'1662 鄭成功驅逐荷蘭人',a:3,h:'查 1661 年誰即位。'}];
+$('#mq').innerHTML=mq.map((q,i)=>`<div class="info"><b>${q.e}</b><select id="s${i}" class="sel mt-2" onchange="document.getElementById('r${i}').innerHTML=''"><option value="-1">請選擇同時期事件</option>${opts.map((o,k)=>`<option value="${k}">${o}</option>`).join('')}</select><div id="r${i}" class="mt-2 text-sm"></div></div>`).join('');
+function mqCheck(){mDone=true;prog();mq.forEach((q,i)=>{const v=+$('#s'+i).value;
+ $('#r'+i).innerHTML=v===q.a?'<b class="text-[#2F6F4E]"><i class="fa-solid fa-check mr-1"></i>答對了</b>':`<b class="text-[#B54848]"><i class="fa-solid fa-xmark mr-1"></i>${v<0?'請先選擇':'再想想'}</b><span class="ml-2 text-[#7C6A58]">${q.h}</span>`})}
+
+/* 骨牌 */
+const st=[['Step 1 歐洲','工業革命爆發','18 至 19 世紀歐洲機器量產，列強急需原料與海外市場，開始向亞洲擴張。'],['Step 2 中國','鴉片戰爭與英法聯軍','1840 至 1860 年清廷接連戰敗，被迫簽訂條約，答應開放通商口岸。'],['Step 3 臺灣','1860 年代開港通商','淡水、基隆、安平、打狗正式開港，外國洋行進駐，接軌國際貿易。'],['Step 4 經濟','茶葉、樟腦、蔗糖外銷','國際需求暴增，茶與樟腦產於北部，帶動臺灣經濟重心由南向北移動。']];
+$('#dom').innerHTML=st.map((s,i)=>`<div class="overflow-hidden rounded-2xl border-2 border-[#D95D39] border-b-4 border-b-[#C04A28] bg-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"><button class="flex w-full cursor-pointer items-center justify-between gap-3 transition hover:bg-[#FFF3EE] px-4 py-3 text-left" onclick="openStep(${i})"><span><span class="block text-sm text-[#7C6A58]">${s[0]}</span><b class="text-lg">${s[1]}</b></span><span class="tag shrink-0">點擊展開<span id="ch${i}" class="inline-block transition"><i class="fa-solid fa-chevron-down"></i></span></span></button><div id="d${i}" class="hidden border-t border-[#E5DACB] bg-[#F4EDE4] px-4 py-3">${s[2]}</div></div>${i<3?'<div class="text-center text-[#C89F7B]"><i class="fa-solid fa-arrow-down"></i></div>':''}`).join('');
+function openStep(i,force){const e=$('#d'+i);const open=force===undefined?e.classList.contains('hidden'):force;e.classList.toggle('hidden',!open);$('#ch'+i).classList.toggle('rotate-180',open)}
+openStep(0,true);
+
+/* 總結測驗（同一頁 5 題） */
+const Q=[{q:'使用「橫向時間軸」學歷史最大的好處是？',o:['背熟所有皇帝名字','看懂同年代各地事件的關聯與因果','不用記任何年份','只背臺灣史就好'],a:1,w:'重點是串起同年代事件，看懂因果。',b:[0]},
+{q:'1624 年荷蘭人來臺灣建城時，中國正處於哪個時期？',o:['唐朝盛世','明朝末年','清朝末年','民國初年'],a:1,w:'1624 年屬明朝天啟年間，是明末。',b:[1,1]},
+{q:'1662 年鄭成功驅逐荷蘭人，是受到中國大陸哪場巨變影響？',o:['明清改朝換代，需反清基地','鴉片戰爭爆發','鄭和下西洋','秦始皇統一'],a:0,w:'明亡清興後，鄭成功需要反清基地。',b:[1,3]},
+{q:'19 世紀哪件世界大事，間接促成清廷開放臺灣通商口岸？',o:['歐洲工業革命與尋求市場','羅馬帝國分裂','美國南北戰爭','第二次世界大戰'],a:0,w:'列強尋求市場，戰後逼清廷開港。',b:[3,0]},
+{q:'臺灣 19 世紀開港通商後，除了蔗糖，哪兩項成為外銷主力？',o:['稻米與小麥','茶葉與樟腦','石油與煤礦','絲綢與瓷器'],a:1,w:'茶葉與樟腦外銷，帶動北臺灣發展。',b:[3,3]},
+{q:'1895 年臺灣割讓給日本，最直接的「A 打了 B」前置事件是哪一場戰爭？',o:['日本與清朝的甲午戰爭','荷蘭與西班牙的戰爭','美國獨立戰爭','第一次世界大戰'],a:0,w:'甲午戰爭清朝戰敗，才簽《馬關條約》割讓臺灣。',b:[4]}];
+let ans=[],done=false,tries=0;
+function rf(){$('#fq').innerHTML=Q.map((q,i)=>{const d=ans[i];
+ return `<div class="rounded-2xl border border-[#E5DACB] bg-white p-5"><p class="mb-1 text-sm text-[#7C6A58]">第 ${i+1} 題</p><h2 class="mb-3 mt-0 text-lg font-bold">${q.q}</h2><div class="space-y-2">${q.o.map((o,k)=>{let c='opt';
+  if(done){c+=' pointer-events-none';if(k===q.a)c+=' !border-[#2F6F4E] !bg-[#ECF5F0]';else if(k===d)c+=' !border-[#B54848] !bg-[#FDF2F2]'}
+  else if(k===d)c+=' ons';
+  return `<button class="${c}" onclick="pick(${i},${k})"><span class="mr-2 opacity-70">${'ABCD'[k]}</span>${o}</button>`}).join('')}</div>
+  ${done&&d!==q.a?`<div class="mt-4 rounded-xl bg-[#FDF2F2] p-3 text-[#B54848]"><b><i class="fa-solid fa-xmark mr-1"></i>${d===undefined?'未作答。':''}${q.w}</b><br><button class="btn btn-o mt-2 !px-4 !py-2 text-sm" onclick="rev(${i})"><i class="fa-solid fa-rotate-left"></i>回到對應課程複習</button></div>`:''}</div>`}).join('')}
+function pick(i,k){if(done)return;ans[i]=k;rf()}
+function rev(i){const b=Q[i].b;if(b.length==1){go(b[0]);return}
+ if(b[0]===1){go(1);setSeg(b[1])}else{go(3);st.forEach((_,k)=>openStep(k,false));openStep(b[1],true)}}
+function finish(){done=true;fDone=true;prog();$('#sub').hidden=true;let s=0;Q.forEach((q,i)=>{if(ans[i]===q.a)s++});const pass=s>=5,left=2-tries;
+ $('#score').innerHTML=`<div class="rounded-2xl border-2 ${pass?'border-[#2F6F4E]':'border-[#B54848]'} bg-white p-6 text-center"><div class="text-4xl ${pass?'text-[#2F6F4E]':'text-[#B54848]'}"><i class="fa-solid ${pass?'fa-circle-check':'fa-circle-xmark'}"></i></div><h2 class="my-1 text-3xl font-bold">${Math.round(s*100/6)} 分（${s}/6）</h2><span class="inline-block rounded-full px-4 py-1 text-sm font-bold text-white ${pass?'bg-[#2F6F4E]':'bg-[#B54848]'}">${pass?'通過':'未通過'}</span>${pass||left<=0?(pass?'':'<p class="mb-0 mt-3 text-sm text-[#7C6A58]">重考次數已用完，請回課程複習。</p>'):`<div class="mt-4"><button class="btn btn-o" onclick="retry()"><i class="fa-solid fa-rotate-right"></i>重新測驗（剩 ${left} 次）</button></div>`}</div>`;
+ rf();scrollTo({top:0,behavior:'smooth'})}
+function retry(){tries++;ans=[];done=false;$('#score').innerHTML='';$('#sub').hidden=false;$('#left').textContent=2-tries;rf();scrollTo({top:0,behavior:'smooth'})}
+
+/* 骨牌排序 */
+const SR=[];
+function mkSort(c,n){let pl=[];const el=document.createElement('div');$('#sorts').appendChild(el);
+ const o={pick(i){if(pl.length<3){pl.push(i);r()}},reset(){pl=[];r()}};
+ function r(){const full=pl.length===3,ok=full&&pl.every((v,k)=>v===k);
+  el.innerHTML=`<div class="info space-y-3"><b>${c.t}</b><div class="space-y-2">${['A 起因','B 衝突','C 影響'].map((l,k)=>`<div class="flex items-center gap-2 rounded-xl border border-dashed border-[#E5DACB] bg-[#FAF6F0] px-3 py-2 text-sm"><b class="shrink-0 text-[#7C6A58]">${l}</b>${pl[k]!==undefined?`<span>${c.items[pl[k]]}</span>`:'<span class="text-[#A08B76]">依序點下方卡片</span>'}</div>`).join('')}</div>
+  <div class="space-y-2">${c.order.filter(i=>!pl.includes(i)).map(i=>`<button class="opt text-sm" onclick="SR[${n}].pick(${i})"><i class="fa-solid fa-hand-pointer mr-2 text-[#6E4726]"></i>${c.items[i]}</button>`).join('')}</div>
+  ${full?(ok?`<div class="rounded-xl bg-[#ECF5F0] p-3 font-bold text-[#2F6F4E]"><i class="fa-solid fa-check mr-1"></i>正確！${c.why}</div>`:'<div class="rounded-xl bg-[#FDF2F2] p-3 font-bold text-[#B54848]"><i class="fa-solid fa-xmark mr-1"></i>順序不對，想想誰先導致誰，按重排再試一次。</div>'):''}
+  <button class="btn !px-4 !py-2 text-sm" onclick="SR[${n}].reset()"><i class="fa-solid fa-rotate-left"></i>重排</button></div>`}
+ r();return o}
+[{t:'關卡一：1895 甲午戰爭連鎖',items:['日本明治維新變強','甲午戰爭打敗清朝，簽《馬關條約》','臺灣割讓給日本，進入日治時期'],order:[2,0,1],why:'日本變強、打贏戰爭，臺灣才被割讓。'},
+ {t:'關卡二：1624 荷蘭來臺連鎖',items:['歐洲人瘋搶中國茶葉與絲綢','荷蘭東印度公司爭奪亞洲貿易據點','荷蘭佔領臺南，建熱蘭遮城'],order:[1,2,0],why:'歐洲需求帶動荷蘭搶據點，才來到臺南。'}].forEach((c,n)=>SR.push(mkSort(c,n)));
+
+/* 如果實驗室 */
+const lab=[['如果 1644 年「明朝沒有滅亡」？','鄭成功就不用渡海找反清基地，荷蘭人可能繼續統治臺灣更久。'],['如果歐洲沒有發生「工業革命」？','西方列強不會急著搶海外市場，臺灣 1860 年代就不會被迫開港通商。'],['如果 1894 年「甲午戰爭清朝打贏了」？','清廷不會簽訂《馬關條約》，臺灣就不會在 1895 年進入日治時期。']];
+$('#lab').innerHTML=lab.map((l,i)=>`<div class="overflow-hidden rounded-2xl border-2 border-[#D95D39] border-b-4 border-b-[#C04A28] bg-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"><button class="flex w-full cursor-pointer items-center justify-between gap-3 transition hover:bg-[#FFF3EE] px-4 py-4 text-left" onclick="openLab(${i})"><span><span class="block text-sm text-[#7C6A58]">如果抽掉這張牌</span><b class="text-lg">${l[0]}</b></span><span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#D95D39] px-3 py-0.5 text-sm font-bold text-white">點擊抽牌推演<span id="lc${i}" class="inline-block transition"><i class="fa-solid fa-chevron-down"></i></span></span></button><div id="lb${i}" class="hidden border-t border-[#E5DACB] bg-[#F4EDE4] px-4 py-3"><b class="text-[#6E4726]">平行宇宙結果</b><p class="m-0 mt-1">${l[1]}</p></div></div>`).join('');
+function openLab(i){const e=$('#lb'+i),open=e.classList.contains('hidden');e.classList.toggle('hidden',!open);$('#lc'+i).classList.toggle('rotate-180',open)}
+
+/* 角色模擬 */
+const roles=[{n:'角色 A：1870 年大稻埕茶商',e:'歐洲與美國正瘋狂搶購臺灣烏龍茶，洋行都跑來淡水收購！',c:[['借錢擴大種茶、賣給洋行','大賺一筆！你趕上開港通商紅利，大稻埕也因此成為全臺最繁華的商業區。',1],['繼續只種傳統稻米自給自足','生活安穩，但錯過了 19 世紀國際貿易帶來的暴富機會。',0]]},
+{n:'角色 B：1624 年臺南平埔族獵人',e:'荷蘭東印度公司剛在安平蓋了熱蘭遮城，急著收購大量鹿皮賣去日本！',c:[['拿鹿皮跟荷蘭人換布匹與鐵器','交易成功！你立刻拿到先進鐵器，但也因為大家拼命打獵，梅花鹿越來越少。',1],['拒絕往來，往內陸山區遷移','避開了荷蘭人的控制與徵稅，但也失去了接觸外來物資的機會。',0]]}];
+let ri=-1,ci=-1;
+function rr(){$('#roles').innerHTML=roles.map((r,i)=>`<button class="opt ${i===ri?'ons':''}" onclick="pickRole(${i})"><i class="fa-solid fa-user-clock mr-2"></i>${r.n}</button>`).join('');
+ if(ri<0){$('#scn').innerHTML='<p class="info m-0 text-sm text-[#7C6A58]"><i class="fa-solid fa-hand-pointer mr-1"></i>先選一個角色</p>';return}
+ const r=roles[ri],c=ci>=0?r.c[ci]:null;
+ $('#scn').innerHTML=`<div class="info"><b class="text-[#6E4726]">遠方大事</b><p class="m-0 mt-1 text-lg">${r.e}</p></div><b>你的選擇</b><div class="space-y-2">${r.c.map((x,k)=>`<button class="opt ${k===ci?'ons':''}" onclick="pickChoice(${k})"><i class="fa-solid fa-arrow-right mr-2 text-[#6E4726]"></i>${x[0]}</button>`).join('')}</div>
+ ${c?(c[2]?`<div class="rounded-xl bg-[#ECF5F0] p-4 font-bold text-[#2F6F4E]"><i class="fa-solid fa-check mr-1"></i>${c[1]}</div>`:`<div class="rounded-xl bg-[#EFE4D6] p-4 font-bold text-[#6E4726]"><i class="fa-solid fa-circle-info mr-1"></i>${c[1]}</div>`):''}`}
+function pickRole(i){ri=i;ci=-1;rr()}
+function pickChoice(k){ci=k;rr()}
+rr();
+rf();
+</script>
+</body>
+</html>
